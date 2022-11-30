@@ -39,9 +39,9 @@ router.post('/', async (req, res) => {
     // creates a new workout object that is a new document
     const workout = await Workout.create({title, load, reps}) 
     // send a response of the workout document
-    response.status(200).json(workout)
+    res.status(200).json(workout)
   } catch (error) {
-    response.status(400).json({error: error.message})
+    res.status(400).json({error: error.message})
   }
 })
 

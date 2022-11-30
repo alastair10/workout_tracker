@@ -13,15 +13,16 @@ const workoutRoutes = require('./routes/workouts')
 // express app created and stored
 const app = express()
 
+//MIDDLEWARE
+// any request that has 'body' (data that's being sent to the server) will be parsed and attached to the request (req) object.
+// this allows it to be used in the request handler.
+// THIS MUST GO BEFORE YOU use any routes (line 25)
+app.use(express.json())
+
 // attaching routes to the app
 // when a request is fired to this route ('/api/workouts), 
 // then use the routes in workoutRoutes
 app.use('/api/workouts', workoutRoutes)
-
-//MIDDLEWARE
-// any request that has 'body' (data that's being sent to the server) will be parsed and attached to the request (req) object.
-// this allows it to be used in the request handler.
-app.use(express.json())
 
 // Connect to DB (using env variable)
 // once connected, we can start listening for requests
