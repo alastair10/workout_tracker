@@ -16,5 +16,10 @@ app.get('/', (req, res) => {
   res.json({mssg: 'Welcome to the app'})
 })
 
-
+// global middleware to log requests coming in
+// helps see what's going on 
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
 
