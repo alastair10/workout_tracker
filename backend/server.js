@@ -18,7 +18,8 @@ app.listen(process.env.PORT, () => {
 })
 
 // attaching routes to the app
-// workoutRoutes are only added once we visit /api/workouts
+// when a request is fired to this route ('/api/workouts), 
+// then use the routes in workoutRoutes
 app.use('/api/workouts', workoutRoutes)
 
 //MIDDLEWARE
