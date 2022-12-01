@@ -5,50 +5,35 @@ const express = require('express')
 // - creates instance of router
 const router = express.Router() 
 
-// import the Model
-const Workout = require('../models/workoutModel')
+// import the individ fxns
+const {
+  getWorkout,
+  getWorkouts,
+  createWorkout,
+  deleteWorkout,
+  updateWorkout
+} = require('../controllers/workoutController')
 
 
 // attach all the request handlers to the router
 // GET all workouts
-router.get('/', (req, res) => {
-  res.json({mssg: 'GET all workouts'}); // json response
-})
+router.get('/', getWorkouts)
 
 // GET a single workout
-router.get('/:id', (req, res) => {
-  res.json({mssg: 'GET a single workout'}); // json response
-})
+router.get('/:id', getWorkout)
 
 
 // DELETE a workout
-router.delete('/:id', (req, res) => {
-  res.json({mssg: 'DELETE a workout'}); // json response
-})
+router.delete('/:id', deleteWorkout)
 
 // POST and PATCH requests send data to server with req object
 //  - but can only access req object with middleware (see express.json in server file)
 
-// POST a new workout
-router.post('/', async (req, res) => {
-  // extract 3 properties w/destructuring
-  const {title, load, reps} = req.body
-
-  try {
-    // create() is an async fxn. handler needs async and await added!
-    // creates a new workout object that is a new document
-    const workout = await Workout.create({title, load, reps}) 
-    // send a response of the workout document
-    res.status(200).json(workout)
-  } catch (error) {
-    res.status(400).json({error: error.message})
-  }
-})
+// POST a new workout (using fxn from model)
+router.post('/', createWorkout)
 
 // PATCH a workout
-router.patch('/:id', (req, res) => {
-  res.json({mssg: 'UPDATE a workout'}); // json response
-})
+router.patch('/:id', updateWorkout)
 
 // export the router so routes can be used in app file
 module.exports = router;
