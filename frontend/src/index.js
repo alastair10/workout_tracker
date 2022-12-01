@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';  <-- deleted upon installation
 // wrap this around the app component below
-import { WorkoutsContextProvider } from './context/WorkoutsContext';
+import { WorkoutsContextProvider } from './context/WorkoutContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
