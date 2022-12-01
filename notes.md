@@ -69,3 +69,20 @@ Now we can start interacting w/DB to retrieve, update data (done inside route ha
   - to add diff pages to application later 
   - in the front end folder: npm install react-router-dom 
     - don't audit fix!
+
+20) Page runs but have 2 different servers running 
+  - one for backend (npm run dev) -< dont forget mongodb.com needs to be running
+  - one for frontend (npm start)
+  - but requests between the two are blocked for security reasons (cross origin request)
+    - can get around when developing:
+      - install CORS package OR add proxy field to front end package.json file!
+
+21) Create  new components for Workout Details and Workout Form
+
+22) Adding data works but page doesnt update automatically - need to refresh to see it
+  - need to update local state to keep it in sync with db
+    - React Context needed to do that!
+      - way to provide global state to many diff compenents then we can update that state by dispatching actions from those components
+      -Create a context to manage the state
+
+23) 
