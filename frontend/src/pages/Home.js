@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
@@ -6,14 +7,14 @@ import WorkoutForm from '../components/WorkoutForm'
 
 
 const Home = () => {
-    // create the state
-    const [workouts, setWorkouts] = useState(null)
+  // this is where we use a global context
+  const {workouts, dispatch} = useWorkoutsContext()
 
   // hook that fires a fxn when a component is rendered
   // 2nd arg is an empty array - dependency array means it only fires once when component renders
   // after firing we have the workouts
   useEffect(() => {
-    // create an async function 
+    // create an async function
     const fetchWorkouts = async () => {
       // fetch data and store response in object
       const response = await fetch('/api/workouts')
@@ -21,9 +22,11 @@ const Home = () => {
       // returns array of workout objects
       const json = await response.json()
 
-      // check if response is ok, update local states
+      // check if response is ok, fire dispatch fxn
+      //  - which fires workoutsReducer fnx (on WokroutContext) 
+      //  - which passes in the action (which is SET_WORKOUTS)
       if (response.ok) {
-        setWorkouts(json)
+        dispatch({type: 'SET_WORKOUTS', payload: json})
       }
     }
 

@@ -8,8 +8,9 @@ export const useWorkoutsContext = () => {
   //  - that component has the state and dispatch fxn inside it
   const context = useContext(WorkoutsContext)
 
-  // 
-
+  if (!context) {
+    throw Error('useWorkoutsContext must be used inside a WorkoutsContextProvider')
+  }
 
   // return the state
   return context

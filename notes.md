@@ -85,4 +85,10 @@ Now we can start interacting w/DB to retrieve, update data (done inside route ha
       - way to provide global state to many diff compenents then we can update that state by dispatching actions from those components
       -Create a context to manage the state
 
-23) 
+23) Set up Context for use in global states
+  - front end state is now in sync with db so it updates frontend and db at same time
+
+24) Delete button
+  - click sends delete request to the API which communicates with mongo db to delete that doc
+  - also need to update global workout state to delete as well
+    - use dispatch fxn to do that

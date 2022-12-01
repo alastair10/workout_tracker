@@ -6,7 +6,7 @@ export const WorkoutsContext = createContext()
 
 // state = current state
 // action = passed into dispatch fxn
-export const WorkoutsReducer = (state, action) = {
+export const workoutsReducer = (state, action) => {
   // check action type
   switch (action.type) {
     case 'SET_WORKOUTS': 
@@ -19,6 +19,10 @@ export const WorkoutsReducer = (state, action) = {
         // action.payload is a single workout object
         // ... state.workouts is spreading the prexisting workout objects
         workouts: [action.payload, ...state.workouts]
+      }
+    case 'DELETE_WORKOUT': 
+      return {
+        workouts: state.workouts.filter((w) => w._id !== action.payload._id)
       }
     default: 
       return state
@@ -45,7 +49,7 @@ export const WorkoutsContextProvider = ({ children }) => {
   // every component will have access to this context
   // provide state and dispatch so it's available to other components
   return (
-    <WorkoutsContext.Provider value={{state, dispatch}}>
+    <WorkoutsContext.Provider value={{...state, dispatch}}>
       { children }
     </WorkoutsContext.Provider>
   )
