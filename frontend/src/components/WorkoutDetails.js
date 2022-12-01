@@ -1,4 +1,4 @@
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext()
@@ -15,7 +15,7 @@ const WorkoutDetails = ({ workout }) => {
     }
   }
   
-  return (
+  return ( 
     <div className="workout-details">
       <h4>{workout.title}</h4>
       <p><strong>Load (kg): </strong>{workout.load}</p>

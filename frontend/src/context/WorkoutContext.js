@@ -49,7 +49,7 @@ export const WorkoutsContextProvider = ({ children }) => {
   // every component will have access to this context
   // provide state and dispatch so it's available to other components
   return (
-    <WorkoutsContext.Provider value={{...state, dispatch}}>
+    <WorkoutsContext.Provider value={{ ...state, dispatch }}>
       { children }
     </WorkoutsContext.Provider>
   )

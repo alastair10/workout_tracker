@@ -1,6 +1,6 @@
 // import context
-import { WorkoutsContext } from "../context/WorkoutContext";
-import { useContext } from "react";
+import { WorkoutsContext } from "../context/WorkoutContext"
+import { useContext } from "react"
 
 // create hook fxn
 export const useWorkoutsContext = () => {
