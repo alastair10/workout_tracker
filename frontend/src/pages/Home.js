@@ -32,7 +32,7 @@ const Home = () => {
 
     fetchWorkouts()
 
-  }, [])
+  }, [dispatch])
   
   // map through the workouts ONLY when it has a value (it's initially null)
   // map goes through each individual workout
