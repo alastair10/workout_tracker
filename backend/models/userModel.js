@@ -18,8 +18,9 @@ const userSchema = new Schema({
   }
 })
 
-// static signup method
-userSchema.statics.signup = async (email, password) => {
+// static signup method 
+// can't use arrow function with async
+userSchema.statics.signup = async function (email, password) {
 
   // look for the email
   // 'this' refers to the model!
