@@ -8,6 +8,7 @@ const WorkoutForm = () => {
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
   const [reps, setReps] = useState('')
+  const [sets, setSets] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
   
@@ -16,7 +17,7 @@ const WorkoutForm = () => {
     // prevent default action of refresh (submitting the info)
     e.preventDefault()
     // create dummy workout object
-    const workout = {title, load, reps}
+    const workout = {title, load, reps, sets}
 
     // use fetch api to send post request to post new data
     const response = await fetch('/api/workouts', {
@@ -38,6 +39,7 @@ const WorkoutForm = () => {
       setTitle('')
       setLoad('')
       setReps('')
+      setSets('')
       setError(null)
       setEmptyFields([])
       console.log('new workout added')
@@ -69,7 +71,7 @@ const WorkoutForm = () => {
 
       />
 
-      <label>Reps: </label>
+      <label>Reps (per set): </label>
       <input
         type="number"
         onChange={(e) => setReps(e.target.value)}
@@ -78,6 +80,14 @@ const WorkoutForm = () => {
 
       />
 
+      <label>Sets: </label>
+      <input
+        type="number"
+        onChange={(e) => setSets(e.target.value)}
+        value={sets}
+        className={emptyFields.includes('sets') ? 'error' : ''}
+
+      />
       <button>Add workout</button>
       {error && <div className="error">{error}</div>}
     </form>

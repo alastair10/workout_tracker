@@ -40,7 +40,7 @@ const getWorkout = async (req, res) => {
 // create a new workout
 const createWorkout = async (req, res) => {
   // extract 3 properties w/destructuring from request body
-  const {title, load, reps} = req.body
+  const {title, load, reps, sets} = req.body
 
   let emptyFields = []
 
@@ -53,6 +53,9 @@ const createWorkout = async (req, res) => {
   if(!reps) {
     emptyFields.push('reps')
   }
+  if(!sets) {
+    emptyFields.push('sets')
+  }
   if(emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
   }
@@ -61,7 +64,7 @@ const createWorkout = async (req, res) => {
   try {
     // create() is an async fxn. handler needs async and await added!
     // creates a new workout object that is a new document
-    const workout = await Workout.create({title, load, reps}) 
+    const workout = await Workout.create({title, load, reps, sets}) 
     // send a response of the workout document
     res.status(200).json(workout)
   } catch (error) {
