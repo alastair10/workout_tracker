@@ -9,6 +9,8 @@ const mongoose = require('mongoose')
 
 // loads the routes to be used on the app
 const workoutRoutes = require('./routes/workouts')
+const userRoutes = require('./routes/user')
+
 
 // express app created and stored
 const app = express()
@@ -19,10 +21,12 @@ const app = express()
 // THIS MUST GO BEFORE YOU use any routes (line 25)
 app.use(express.json())
 
-// attaching routes to the app
+// Register the routes (attaching routes to the app)
 // when a request is fired to this route ('/api/workouts), 
 // then use the routes in workoutRoutes
 app.use('/api/workouts', workoutRoutes)
+app.use('/api/user', userRoutes)
+
 
 // Connect to DB (using env variable)
 // once connected, we can start listening for requests
