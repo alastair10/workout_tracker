@@ -21,8 +21,9 @@ const signupUser = async (req, res) => {
 
     // return email and user document if successful
     res.status(200).json({email, user})
-  } catch (error)
+  } catch (error) {
     res.status(400).json({error: error.message})
+  }
 } 
 
 module.exports = { loginUser, signupUser }
