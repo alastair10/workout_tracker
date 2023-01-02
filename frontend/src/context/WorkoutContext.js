@@ -1,8 +1,8 @@
-// this fxn allows us to make a new context we can provide to components
+// createContext is fxn that allows us to make a new context we can provide to components
 import { createContext, useReducer } from "react";
 
 // creates (and exports) a new context
-export const WorkoutsContext = createContext()
+export const WorkoutsContext = createContext();
 
 // state = current state
 // action = passed into dispatch fxn
@@ -35,7 +35,7 @@ export const workoutsReducer = (state, action) => {
 export const WorkoutsContextProvider = ({ children }) => {
   // useReducer hook updates the state 
   // get back a state and a fxn (dispatch) to update the state value
-  // initial value for state is set to null
+  // initial value for state is set to null 
   const [state, dispatch] = useReducer(workoutsReducer, {
     workouts: null
   })

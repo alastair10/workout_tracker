@@ -18,17 +18,17 @@ const userSchema = new Schema({
   }
 })
 
-// static signup method 
+// static signup method = Creating our own Mongo Method!
 // can't use arrow function with async
 userSchema.statics.signup = async function (email, password) {
 
   // look for the email
-  // 'this' refers to the model!
+  // 'this' refers to the model when making a static method!
   const exists = await this.findOne({ email })
 
   // check if email exists
   if (exists) {
-    throw Error('Email already in use')
+    throw Error('Email already in use.')
   }
 
   // generate salt, 10 is default 'rounds' or cost
@@ -36,9 +36,8 @@ userSchema.statics.signup = async function (email, password) {
   // hash salt with pw
   const hash = await bcrypt.hash(password, salt)
 
-  // create a document for the user in the db
-  // using the hashed password
-  const user = await this.create({ email, password: hash})
+  // create a document for the user in the db using the hashed password
+  const user = await this.create({ email, password: hash })
 
   // return user bc we're calling this fnx elsewhere
   return user 

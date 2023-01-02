@@ -6,7 +6,6 @@ const router = express.Router()
 //access controller functions
 const { singupUser, loginUser, signupUser } = require('../controllers/userController')
 
-
 // login route
 //  - pass in the controller fxn
 router.post('/login', loginUser)
